@@ -23,22 +23,22 @@ for i=2:M-1
         % West
         iIdx(ctr,1) = unkOrd(j,i);
         jIdx(ctr,1) = unkOrd(j,i-1);
-        val(ctr,1) = 1/(dXi^2);
+        val(ctr,1) = 1/(dEta^2);
         ctr = ctr + 1;
         % East
         iIdx(ctr,1) = unkOrd(j,i);
         jIdx(ctr,1) = unkOrd(j,i+1);
-        val(ctr,1) = 1/(dXi^2);
+        val(ctr,1) = 1/(dEta^2);
         ctr = ctr + 1;
         % South
         iIdx(ctr,1) = unkOrd(j,i);
         jIdx(ctr,1) = unkOrd(j+1,i);
-        val(ctr,1) = 1/(dEta^2);
+        val(ctr,1) = 1/(dXi^2);
         ctr = ctr + 1;
         % North
         iIdx(ctr,1) = unkOrd(j,i);
         jIdx(ctr,1) = unkOrd(j-1,i);
-        val(ctr,1) = 1/(dEta^2);
+        val(ctr,1) = 1/(dXi^2);
         ctr = ctr + 1;
     end
 end
@@ -57,42 +57,42 @@ for j=2:N-1
     % West
     iIdx(ctr,1) = unkOrd(j,1);
     jIdx(ctr,1) = unkOrd(j,M);
-    val(ctr,1) = 1/(dXi^2);
+    val(ctr,1) = 1/(dEta^2);
     ctr = ctr + 1;
     % West
     iIdx(ctr,1) = unkOrd(j,M);
     jIdx(ctr,1) = unkOrd(j,M-1);
-    val(ctr,1) = 1/(dXi^2);
+    val(ctr,1) = 1/(dEta^2);
     ctr = ctr + 1;
     % East
     iIdx(ctr,1) = unkOrd(j,1);
     jIdx(ctr,1) = unkOrd(j,2);
-    val(ctr,1) = 1/(dXi^2);
+    val(ctr,1) = 1/(dEta^2);
     ctr = ctr + 1;
     % East
     iIdx(ctr,1) = unkOrd(j,M);
     jIdx(ctr,1) = unkOrd(j,1);
-    val(ctr,1) = 1/(dXi^2);
+    val(ctr,1) = 1/(dEta^2);
     ctr = ctr + 1;
     % South
     iIdx(ctr,1) = unkOrd(j,1);
     jIdx(ctr,1) = unkOrd(j+1,1);
-    val(ctr,1) = 1/(dEta^2);
+    val(ctr,1) = 1/(dXi^2);
     ctr = ctr + 1;
     % South
     iIdx(ctr,1) = unkOrd(j,M);
     jIdx(ctr,1) = unkOrd(j+1,M);
-    val(ctr,1) = 1/(dEta^2);
+    val(ctr,1) = 1/(dXi^2);
     ctr = ctr + 1;
     % North
     iIdx(ctr,1) = unkOrd(j,1);
     jIdx(ctr,1) = unkOrd(j-1,1);
-    val(ctr,1) = 1/(dEta^2);
+    val(ctr,1) = 1/(dXi^2);
     ctr = ctr + 1;
     % North
     iIdx(ctr,1) = unkOrd(j,M);
     jIdx(ctr,1) = unkOrd(j-1,M);
-    val(ctr,1) = 1/(dEta^2);
+    val(ctr,1) = 1/(dXi^2);
     ctr = ctr + 1;
 end
 % xi = 0,xiMax 
@@ -119,22 +119,22 @@ for i=2:M-1
         % West
         iIdx(ctr,1) = unkOrd(j,i)+M*N;
         jIdx(ctr,1) = unkOrd(j,i-1)+M*N;
-        val(ctr,1) = 1/(dXi^2);
+        val(ctr,1) = 1/(dEta^2);
         ctr = ctr + 1;
         % East
         iIdx(ctr,1) = unkOrd(j,i)+M*N;
         jIdx(ctr,1) = unkOrd(j,i+1)+M*N;
-        val(ctr,1) = 1/(dXi^2);
+        val(ctr,1) = 1/(dEta^2);
         ctr = ctr + 1;
         % South
         iIdx(ctr,1) = unkOrd(j,i)+M*N;
         jIdx(ctr,1) = unkOrd(j+1,i)+M*N;
-        val(ctr,1) = 1/(dEta^2);
+        val(ctr,1) = 1/(dXi^2);
         ctr = ctr + 1;
         % North
         iIdx(ctr,1) = unkOrd(j,i)+M*N;
         jIdx(ctr,1) = unkOrd(j-1,i)+M*N;
-        val(ctr,1) = 1/(dEta^2);
+        val(ctr,1) = 1/(dXi^2);
         ctr = ctr + 1;
     end
 end
@@ -153,42 +153,42 @@ for j=2:N-1
     % West
     iIdx(ctr,1) = unkOrd(j,1)+M*N;
     jIdx(ctr,1) = unkOrd(j,M)+M*N;
-    val(ctr,1) = 1/(dXi^2);
+    val(ctr,1) = 1/(dEta^2);
     ctr = ctr + 1;
     % West
     iIdx(ctr,1) = unkOrd(j,M)+M*N;
     jIdx(ctr,1) = unkOrd(j,M-1)+M*N;
-    val(ctr,1) = 1/(dXi^2);
+    val(ctr,1) = 1/(dEta^2);
     ctr = ctr + 1;
     % East
     iIdx(ctr,1) = unkOrd(j,1)+M*N;
     jIdx(ctr,1) = unkOrd(j,2)+M*N;
-    val(ctr,1) = 1/(dXi^2);
+    val(ctr,1) = 1/(dEta^2);
     ctr = ctr + 1;
     % East
     iIdx(ctr,1) = unkOrd(j,M)+M*N;
     jIdx(ctr,1) = unkOrd(j,1)+M*N;
-    val(ctr,1) = 1/(dXi^2);
+    val(ctr,1) = 1/(dEta^2);
     ctr = ctr + 1;
     % South
     iIdx(ctr,1) = unkOrd(j,1)+M*N;
     jIdx(ctr,1) = unkOrd(j+1,1)+M*N;
-    val(ctr,1) = 1/(dEta^2);
+    val(ctr,1) = 1/(dXi^2);
     ctr = ctr + 1;
     % South
     iIdx(ctr,1) = unkOrd(j,M)+M*N;
     jIdx(ctr,1) = unkOrd(j+1,M)+M*N;
-    val(ctr,1) = 1/(dEta^2);
+    val(ctr,1) = 1/(dXi^2);
     ctr = ctr + 1;
     % North
     iIdx(ctr,1) = unkOrd(j,1)+M*N;
     jIdx(ctr,1) = unkOrd(j-1,1)+M*N;
-    val(ctr,1) = 1/(dEta^2);
+    val(ctr,1) = 1/(dXi^2);
     ctr = ctr + 1;
     % North
     iIdx(ctr,1) = unkOrd(j,M)+M*N;
     jIdx(ctr,1) = unkOrd(j-1,M)+M*N;
-    val(ctr,1) = 1/(dEta^2);
+    val(ctr,1) = 1/(dXi^2);
     ctr = ctr + 1;
 end
 % xi = 0,xiMax 
