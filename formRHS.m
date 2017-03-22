@@ -1,4 +1,4 @@
-function rhs = formRHS(Omega, Psi, M,N,R,Re)
+function rhs = formRHS(OmegaPsi, M,N,R,Re)
 xiMax = log(R)/pi;
 dXi = xiMax/(N-1.5);
 dEta = 2/M;
@@ -25,10 +25,10 @@ for i=2:M-1         % Eta variable
         Xiplus = unkOrd(j+1,i);
         Ximinus = unkOrd(j-1,i);
         
-        dOmEta = (Omega(Etaplus+M*N) - Omega(Etaminus+M*N))/(2*dEta);
-        dOmXi = (Omega(Xiplus+M*N) - Omega(Ximinus+M*N))/(2*dXi);
-        dPsiEta = (Psi(Etaplus) - Psi(Etaminus))/(2*dEta);
-        dPsiXi = (Psi(Xiplus) - Psi(Ximinus))/(2*dXi);
+        dOmEta = (OmegaPsi(Etaplus+M*N) - OmegaPsi(Etaminus+M*N))/(2*dEta);
+        dOmXi = (OmegaPsi(Xiplus+M*N) - OmegaPsi(Ximinus+M*N))/(2*dXi);
+        dPsiEta = (OmegaPsi(Etaplus) - OmegaPsi(Etaminus))/(2*dEta);
+        dPsiXi = (OmegaPsi(Xiplus) - OmegaPsi(Ximinus))/(2*dXi);
         
         rhs(idx) = Re/2*(pi*E(j)*(C(i)*dOmXi - S(i)*dOmEta) - dPsiXi*dOmEta + dPsiEta*dOmXi);
     end
@@ -42,10 +42,10 @@ for j=2:N-1         % Xi variable
     Xiplus = unkOrd(j+1,M);
     Ximinus = unkOrd(j-1,M);
     
-        dOmEta = (Omega(Etaplus+M*N) - Omega(Etaminus+M*N))/(2*dEta);
-        dOmXi = (Omega(Xiplus+M*N) - Omega(Ximinus+M*N))/(2*dXi);
-        dPsiEta = (Psi(Etaplus) - Psi(Etaminus))/(2*dEta);
-        dPsiXi = (Psi(Xiplus) - Psi(Ximinus))/(2*dXi);
+        dOmEta = (OmegaPsi(Etaplus+M*N) - OmegaPsi(Etaminus+M*N))/(2*dEta);
+        dOmXi = (OmegaPsi(Xiplus+M*N) - OmegaPsi(Ximinus+M*N))/(2*dXi);
+        dPsiEta = (OmegaPsi(Etaplus) - OmegaPsi(Etaminus))/(2*dEta);
+        dPsiXi = (OmegaPsi(Xiplus) - OmegaPsi(Ximinus))/(2*dXi);
         
         rhs(idx) = Re/2*(pi*E(j)*(C(M)*dOmXi - S(M)*dOmEta) - dPsiXi*dOmEta + dPsiEta*dOmXi);
         
@@ -56,10 +56,10 @@ for j=2:N-1         % Xi variable
     Xiplus = unkOrd(j+1,1);
     Ximinus = unkOrd(j-1,1);
     
-        dOmEta = (Omega(Etaplus+M*N) - Omega(Etaminus+M*N))/(2*dEta);
-        dOmXi = (Omega(Xiplus+M*N) - Omega(Ximinus+M*N))/(2*dXi);
-        dPsiEta = (Psi(Etaplus) - Psi(Etaminus))/(2*dEta);
-        dPsiXi = (Psi(Xiplus) - Psi(Ximinus))/(2*dXi);
+        dOmEta = (OmegaPsi(Etaplus+M*N) - OmegaPsi(Etaminus+M*N))/(2*dEta);
+        dOmXi = (OmegaPsi(Xiplus+M*N) - OmegaPsi(Ximinus+M*N))/(2*dXi);
+        dPsiEta = (OmegaPsi(Etaplus) - OmegaPsi(Etaminus))/(2*dEta);
+        dPsiXi = (OmegaPsi(Xiplus) - OmegaPsi(Ximinus))/(2*dXi);
         
         rhs(idx) = Re/2*(pi*E(j)*(C(1)*dOmXi - S(1)*dOmEta) - dPsiXi*dOmEta + dPsiEta*dOmXi);
 
