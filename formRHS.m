@@ -1,4 +1,4 @@
-function rhs = formRHS(M,N,R,Re)
+function rhs = formRHS(Omega, Psi, M,N,R,Re)
 xiMax = log(R)/pi;
 dXi = xiMax/(N-1.5);
 dEta = 2/M;
@@ -11,16 +11,26 @@ for i=1:M
     rhs(unkOrd(N,i)) = -sin(pi*eta);
 end
 
-for i=2:M-1
-    for j=2:N-1
+E = xiMax-dXi/2:dXi:0; E = exp(pi*E);
+S = 0:M-1; C = cos(-pi + pi*dEta*S);
+S = sin(-pi + pi*dEta*S);
+
+for i=2:M-1         % Eta variable
+    for j=2:N-1     % Xi variable
         % interior omega
         idx = unkOrd(j,i)+M*N;
-        eta = (i-1)*dEta-1;
-        xi = (N-j)*dXi;
-        r = exp(pi*xi);
-        theta = pi*xi;
-        % Connor's function here, see formOps for method of referencing
-        % other indices/neighboring points
+        
+        Etaplus = unkOrd(j,i+1);
+        Etaminus = unkOrd(j,i-1);
+        Xiplus = unkOrd(j+1,i);
+        Ximinus = unkOrd(j-1,i);
+        
+        dOmEta = (Omega(Etaplus+M*N) - Omega(Etaminus+M*N))/(2*dEta);
+        dOmXi = (Omega(Xiplus+M*N) - Omega(Ximinus+M*N))/(2*dXi);
+        dPsiEta = (Psi(Etaplus) - Psi(Etaminus))/(2*dEta);
+        dPsiXi = (Psi(Xiplus) - Psi(Ximinus))/(2*dXi);
+        
+        rhs(idx) = Re/2*(pi*E*(C*dOmXi - S*dOmEta) - dPsiXi*dOmEta + dPsiEta*dOmXi);
     end
 end
 for j=2:N-1
