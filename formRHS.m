@@ -5,13 +5,8 @@ dEta = 2/M;
 unkOrd = reshape([1:M*N]', N, M);
 rhs = zeros(2*M*N,1);
 % xi = 0,xiMax 
-for i=1:M
-    % Dirichlet on bottom (psi)
-    eta = (i-1)*dEta-1;
-    rhs(unkOrd(N,i)) = -sin(pi*eta);
-end
 
-E = xiMax-dXi/2:dXi:0; E = exp(pi*E);
+E = xiMax-dXi/2:-dXi:0; E = exp(pi*E);
 S = 0:M-1; C = cos(-pi + pi*dEta*S);
 S = sin(-pi + pi*dEta*S);
 
@@ -66,8 +61,8 @@ for j=2:N-1         % Xi variable
 end
 % xi = 0,xiMax 
 for i=1:M
-    % Dirichlet on bottom (omega)
-    eta = (i-1)*dEta-1;
-    rhs(unkOrd(N,i)+M*N) = 2*sin(pi*eta)*(dXi*pi-1)/(dXi^2);
+    % Dirichlet on bottom
+    rhs(unkOrd(N,i)) = -S(i);
+    rhs(unkOrd(N,i)+M*N) = 2*S(i)*(dXi*pi-1)/(dXi^2);
 end
 end
