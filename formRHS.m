@@ -30,18 +30,39 @@ for i=2:M-1         % Eta variable
         dPsiEta = (Psi(Etaplus) - Psi(Etaminus))/(2*dEta);
         dPsiXi = (Psi(Xiplus) - Psi(Ximinus))/(2*dXi);
         
-        rhs(idx) = Re/2*(pi*E*(C*dOmXi - S*dOmEta) - dPsiXi*dOmEta + dPsiEta*dOmXi);
+        rhs(idx) = Re/2*(pi*E(j)*(C(i)*dOmXi - S(i)*dOmEta) - dPsiXi*dOmEta + dPsiEta*dOmXi);
     end
 end
-for j=2:N-1
+for j=2:N-1         % Xi variable
     % omega periodic walls
-    idx = unkOrd(j,i)+M*N;
-    eta = (i-1)*dEta-1;
-    xi = (N-j)*dXi;
-    r = exp(pi*xi);
-    theta = pi*xi;
-%     Connor's function here, see formOps for method of referencing
-%     other indices/neighboring points
+    idx = unkOrd(j,M)+M*N;
+    
+    Etaplus = unkOrd(j,1);
+    Etaminus = unkOrd(j,M-1);
+    Xiplus = unkOrd(j+1,M);
+    Ximinus = unkOrd(j-1,M);
+    
+        dOmEta = (Omega(Etaplus+M*N) - Omega(Etaminus+M*N))/(2*dEta);
+        dOmXi = (Omega(Xiplus+M*N) - Omega(Ximinus+M*N))/(2*dXi);
+        dPsiEta = (Psi(Etaplus) - Psi(Etaminus))/(2*dEta);
+        dPsiXi = (Psi(Xiplus) - Psi(Ximinus))/(2*dXi);
+        
+        rhs(idx) = Re/2*(pi*E(j)*(C(M)*dOmXi - S(M)*dOmEta) - dPsiXi*dOmEta + dPsiEta*dOmXi);
+        
+    idx = unkOrd(j,1)+M*N;
+    
+    Etaplus = unkOrd(j,2);
+    Etaminus = unkOrd(j,M);
+    Xiplus = unkOrd(j+1,1);
+    Ximinus = unkOrd(j-1,1);
+    
+        dOmEta = (Omega(Etaplus+M*N) - Omega(Etaminus+M*N))/(2*dEta);
+        dOmXi = (Omega(Xiplus+M*N) - Omega(Ximinus+M*N))/(2*dXi);
+        dPsiEta = (Psi(Etaplus) - Psi(Etaminus))/(2*dEta);
+        dPsiXi = (Psi(Xiplus) - Psi(Ximinus))/(2*dXi);
+        
+        rhs(idx) = Re/2*(pi*E(j)*(C(1)*dOmXi - S(1)*dOmEta) - dPsiXi*dOmEta + dPsiEta*dOmXi);
+
 end
 % xi = 0,xiMax 
 for i=1:M
